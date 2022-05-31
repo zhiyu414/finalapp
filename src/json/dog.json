@@ -30,7 +30,7 @@
     "otest":"",
     "bug_inside":"5/1",
     "bug_ousitde":"5/1",
-    "microchip":"992001001425089",
+    "microchip":"是",
     "cat_close":"沒相處過",
     "people_close":"親人",
     "dog_close":"親狗",
@@ -38,7 +38,7 @@
     "special_notice":"幼犬一天四餐"
  },
  {
-    "image":"http://www.langlangdontcry.com.tw/uploads/album_img_1653465326.jpg",
+    "image":"https://github.com/zhiyu414/json/blob/master/image/album_img_1653465326.jpg?raw=true",
     "name": "浪皮皮",
     "birthday": "約2015年出生",
     "gender": "男生/已結紮",

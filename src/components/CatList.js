@@ -1,16 +1,15 @@
 import React from "react";
 import { FlatList } from "native-base";
-import AlbumDetail from "./AlbumDetail";
+import CatDetail from "./CatDetail";
 
-const AlbumList = ({ list, navigation }) => {
-  const renderItem = ({ item }) => <AlbumDetail album={item} navigation={navigation} />;
+const CatList = ({ list, navigation }) => {
+  const renderItem = ({ item }) => <CatDetail album={item} navigation={navigation} />;
   return (
     
     <FlatList
     _dark={{ bg: "blueGray.900" }}
     _light={{ bg: "#FEFFEF" }}
-    // marginTop={329}
-    marginBottom={8}
+    marginTop={329}
       data={list}
       renderItem={renderItem}
       keyExtractor={item => item.title}
@@ -18,5 +17,5 @@ const AlbumList = ({ list, navigation }) => {
   );  
 }
 
-export default AlbumList;
+export default CatList;
 

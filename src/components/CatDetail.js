@@ -2,7 +2,7 @@ import React from "react";
 import { Box, HStack, VStack, AspectRatio, Text, Image, Pressable,Center ,ScrollView } from "native-base"
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const AlbumDetail = ({ album, navigation }) => {
+const CatDetail = ({ album, navigation }) => {
   return (
     <Box 
     flex={1}
@@ -12,7 +12,7 @@ const AlbumDetail = ({ album, navigation }) => {
 > 
 <ScrollView>
     <Box
-      marginLeft={29} marginRight={29} marginTop={5} borderRadius={4} shadow={2} 
+      marginLeft={29} marginRight={29} marginTop={10} borderRadius={4} shadow={2} 
       _dark={{ borderColor: 'blueGray.500', borderWidth: 0.6 }}  
     >
       
@@ -46,7 +46,7 @@ const AlbumDetail = ({ album, navigation }) => {
             >{album.gender}</Text>  
             </VStack>
 
-            <Box w={8} h={8} borderRadius={20} bgColor="#F9E6A1" position="absolute" top={35} right={-138}>
+            <Box w={8} h={8} borderRadius={20} bgColor="#F9E6A1" position="absolute" top={35} left={250}>
             <Box position="absolute" top={1} right={1}>
             <MaterialCommunityIcons name="heart-outline" color="#574E45" size={25} />
             </Box>
@@ -62,4 +62,4 @@ const AlbumDetail = ({ album, navigation }) => {
     </Box> 
   )};
 
-export default AlbumDetail;
+export default CatDetail;
