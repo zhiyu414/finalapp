@@ -7,7 +7,7 @@ const AlbumList = ({ list, navigation }) => {
   return (
     
     <FlatList
-    _dark={{ bg: "blueGray.900" }}
+    _dark={{ bg: "#574E45" }}
     _light={{ bg: "#FEFFEF" }}
     // marginTop={329}
     marginBottom={8}

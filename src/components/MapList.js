@@ -8,8 +8,8 @@ import sections from "../json/type_section.json";
 const MapList = () => {
   const renderSectionHeader = ({section}) => (
     
-      <Center  _dark={{bg:"#4F5B57"}}>
-      <Text fontSize={20} marginTop={5} marginBottom={0}  color="#4F5B57" fontWeight="bold"  _dark={{ color:"#fff"}}>
+      <Center  _dark={{bg:"#574E45"}} _light={{bg: "#FEFFEF"}}> 
+      <Text fontSize={20} marginTop={0} marginBottom={0}  color="#4F5B57" fontWeight="bold"  _dark={{ color:"#fff"}}>
         {section.title} 
       </Text>
      
@@ -43,7 +43,7 @@ const MapList = () => {
   
   
     <SectionList 
-     _dark={{bg:"#4F5B57"}}
+     _dark={{bg:"#574E45"}}
     
       sections={sections}
       contentContainerStyle={{ paddingHorizontal: 0 }}
@@ -52,6 +52,8 @@ const MapList = () => {
       renderSectionHeader={renderSectionHeader}
       renderItem={renderItem}
       keyExtractor={ item => item.title }
+      marginBottom={55}
+      marginTop={20}
     />
   
   );

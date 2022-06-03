@@ -6,7 +6,7 @@ import SegmentedControlTab from "react-native-segmented-control-tab";
 
 const CatScreen = ({ navigation }) => {
   return (
-    <Box _dark={{ bg: "blueGray.900" }}
+    <Box _dark={{ bg: "#574E45" }}
     _light={{ bg: "#FEFFEF" }}>
       <ScrollView>
        <CatList 

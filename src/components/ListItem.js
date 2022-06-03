@@ -9,7 +9,7 @@ const ListItem = ({ title, navigation, destination }) => {
         destination ? navigation.navigate(destination) : null;
       }}
     >
-      <HStack
+      {/* <HStack
         _dark={{
           bg: "#4F5B57",
           borderColor: "#4F5B57",
@@ -34,7 +34,20 @@ const ListItem = ({ title, navigation, destination }) => {
 
         
 
-      </HStack>
+      </HStack> */}
+
+      <Box w={341} h={67}  _dark={{ bg: "#35322E" }}
+        _light={{ bg: "white" }} borderRadius={4} alignSelf="center" style={{elevation:2}} marginTop={30}>
+        <HStack justifyContent="flex-start" marginTop={0}>
+          <Center width="54" height="54"   position= "absolute"   borderRadius="9" marginTop={2} marginLeft={2} 
+                _dark={{bg: "#BCB9A7" ,borderwidth:1,borderColor:"#fff"}} _light={{bg:"#F1E9C3"}}> 
+            <MaterialCommunityIcons name="cog-outline" color="#000000"  size={32} />
+          </Center>
+
+          <Text fontSize={15} marginLeft={75} marginTop={6}>{title}</Text>
+            
+        </HStack>
+      </Box>      
     </Pressable>
   );
 };

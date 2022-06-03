@@ -36,16 +36,20 @@ const DetailScreen = ({ route}) => {
         <Center>
        <Box
           w="100%"
-          h={800}
+          // h={1000}
           marginTop={260}
-          bgColor="#FEFFEF"
+         paddingBottom={5}
+          
+          _dark={{ bg: "#574E45" }}
+          _light={{ bg: "#FEFFEF" }}
           borderRadius={20}
        >
          
           <Box 
           w={352}
           h={112}
-          bgColor="#fff"
+          _dark={{ bg: "#35322E" }}
+          _light={{ bg: "#fff" }}
           borderRadius={20}
           position="absolute"
           top={27}
@@ -63,37 +67,38 @@ const DetailScreen = ({ route}) => {
            
          </Box> 
          
-         <HStack marginTop={170}  alignSelf= 'flex-start' marginLeft={50}>
-            <Text>
-               <Text bold fontSize={15} color="#A5A5A5">是否親人  </Text>
+         <HStack marginTop={170}  alignSelf= 'flex-start' marginLeft={10}>
+            <Text w={126}>
+               <Text bold fontSize={15} color="#A5A5A5" >是否親人  </Text>
                {people_close}
              </Text>
-             <Text marginLeft={70} fontSize={15}>
+             <Text marginLeft={10} fontSize={15} w={134}>
                <Text bold fontSize={15} color="#A5A5A5" >是否親貓  </Text>
                {cat_close}
              </Text>
              
          </HStack>
-         <HStack alignSelf= 'flex-start' marginTop={4} marginRight={0} marginLeft={49}>
-            <Text fontSize={15}>
-               <Text bold  color="#A5A5A5">是否已植入晶片  </Text>
+         <HStack alignSelf= 'flex-start' marginTop={4} marginRight={0} marginLeft={10} w={40} h={20}>
+            <Text fontSize={15} >
+               <Text bold  color="#A5A5A5" >是否已植入晶片  </Text>
                {microchip}
              </Text>
-             <Text marginLeft={9} fontSize={15}>
+             <Text marginLeft={10} fontSize={15} >
                <Text bold color="#A5A5A5">是否親狗  </Text>
                {dog_close}
              </Text>
          </HStack>
          <Box 
           w={352}
-          h={112}
-          bgColor="#fff"
+          h={150}
+          _dark={{ bg: "#35322E" }}
+          _light={{ bg: "#fff" }}
           borderRadius={20}
           position="absolute"
-          top={246}
+          marginTop={260}
           alignSelf= 'center'
          >
-           
+           <ScrollView>
            <HStack alignSelf= 'flex-start' marginTop={13} marginLeft={5}>
              <Box w={2} h={5} bgColor="#ECD563" marginRight={2}/>
              <Text w={270} fontSize={15}>
@@ -102,10 +107,10 @@ const DetailScreen = ({ route}) => {
              </Text>
              
            </HStack>
-          
+           </ScrollView>
          
          </Box> 
-         <VStack alignSelf= 'center'  marginTop={160} w={310}>
+         <VStack alignSelf= 'center'   w={310} paddingTop={155} marginBottom={119}>
          <HStack >
              <Box w={2} h={5} bgColor="#ECD563"  marginRight={2}/>
              <Text fontSize={15} bold>
@@ -124,14 +129,15 @@ const DetailScreen = ({ route}) => {
          </VStack>
          <Box 
           w={352}
-          h={112}
-          bgColor="#ffff"
+          h={130}
+          _dark={{ bg: "#35322E" }}
+          _light={{ bg: "#fff" }}
           borderRadius={20}
           position="absolute"
-          top={510}
+          marginTop={570}
           alignSelf= 'center'
          >
-           <HStack marginLeft={5} marginTop={13}>
+           <HStack marginLeft={5} marginTop={13} w={300}>
              <Box w={2} h={5} bgColor="#ECD563"  marginRight={2}/>
              <Text fontSize={15} bold>
                <Text fontWeight="normal">預防針施打狀況(下一次施打時間): </Text>
@@ -159,7 +165,7 @@ const DetailScreen = ({ route}) => {
 
             
          </Box> 
-         <VStack alignSelf= 'center' marginTop={160} w={310}>
+         <VStack alignSelf= 'center'  w={310} paddingTop={60}>
          <HStack >
              <Box w={2} h={5} bgColor="#ECD563" marginRight={2}/>
              <Text fontSize={15} bold>

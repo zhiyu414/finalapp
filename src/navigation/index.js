@@ -10,6 +10,9 @@ import {
   DrawerItem,
 } from '@react-navigation/drawer';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Foundation from 'react-native-vector-icons/Foundation' 
+import Ionicons from 'react-native-vector-icons/Ionicons' 
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { StatusBar, Divider, Image, Input, HStack, Box } from 'native-base';
 import { extendTheme, useColorMode } from 'native-base';
 
@@ -20,6 +23,7 @@ import DTypeScreen from '../screens/DTypeScreen'
 import ContentScreen from '../screens/ContentScreen';
 import DisplaySettingScreen from '../screens/DisplaySettingScreen';
 import AccountSettingScreen from '../screens/AccountSettingScreen';
+import MenuScreen from '../screens/MenuScreen'
 import NullScreen from '../screens/NullScreen';
 import { lightTheme, darkTheme } from '../Theme';
 import ActionButton from '../components/ActionButton';
@@ -57,9 +61,9 @@ const MyTabs = () => {
     <Tab.Navigator
       initialRouteName="HomeStack"
       screenOptions={{
-        tabBarInactiveTintColor: colorMode == 'light' ? colors.light500 : 'gray',
-        tabBarActiveTintColor: colorMode == 'light' ? colors.primary700 : 'white',
-        tabBarStyle: { backgroundColor: colorMode == 'light' ? 'white' : 'black' },
+        tabBarInactiveTintColor: colorMode == 'light' ? '#FEFFEF' : '#574E45',
+        tabBarActiveTintColor: colorMode == 'light' ? '#574E45' : '#ECD563',
+        tabBarStyle: { backgroundColor: colorMode == 'light' ? '#F9E6A1' : '#9D8F72' },
         // headerShown: false
       }}
       >
@@ -68,9 +72,9 @@ const MyTabs = () => {
         component={HomeStack}
         options={{
           headerShown: false,
-          title: "Home",
+          title: "",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="home" color={color} size={26} />
+            <Foundation name="paw" color={color} size={30} />
           ),
         }}
       />
@@ -92,22 +96,38 @@ const MyTabs = () => {
             fontSize: 20
           },
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="heart-outline" color={color} size={31} />
+            <MaterialCommunityIcons name="heart-outline" color={color} size={30} />
           ),
         }}
       />
       <Tab.Screen
-        name="SettingsStack"
-        component={SettingsStack}
+        name="MenuStack"
+        component={MenuStack}
         options={{
           headerShown: false,
-          title: "Settings",
+          title: "",
           headerTitleStyle: {
             fontWeight: '400',
             fontSize: 20
           },
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="cog" color={color} size={26} />
+            <MaterialIcons name="restaurant-menu" color={color} size={30} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="SettingsStack"
+        component={SettingsStack}
+        options={{
+          headerShown: false,
+          title: "",
+          headerTitleStyle: {
+            fontWeight: '400',
+            fontSize: 20
+          },
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="information-circle" color={color} size={30} />
           ),
         }}
       />
@@ -121,12 +141,12 @@ const SettingsStack = ({ navigation }) => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Settings"
+        name="資訊"
         component={SettingsScreen}
         options={{
           title: "Settings",
           headerStyle: {
-            backgroundColor: colorMode == 'light' ? 'white' : 'black',
+            backgroundColor: colorMode == 'light' ? '#F9E6A1' : '#BCB9A7',
           },
           headerTitleStyle: {
             color: colorMode == 'light' ? 'black' : 'white',
@@ -140,9 +160,9 @@ const SettingsStack = ({ navigation }) => {
         name="DisplaySetting"
         component={DisplaySettingScreen}
         options={{
-          title: "Display",
+          title: "切換主題",
           headerStyle: {
-            backgroundColor: colorMode == 'light' ? 'white' : 'black',
+            backgroundColor: colorMode == 'light' ? '#F9E6A1' : '#BCB9A7',
           },
           headerTintColor: colorMode == 'light' ? 'black' : 'white',
           headerTitleStyle: {
@@ -152,22 +172,7 @@ const SettingsStack = ({ navigation }) => {
           },
         }}
       />
-      {/* <Stack.Screen
-        name="AccountSetting"
-        component={AccountSettingScreen}
-        options={{
-          title: "Account",
-          headerStyle: {
-            backgroundColor: colorMode == 'light' ? 'white' : 'black',
-          },
-          headerTintColor: colorMode == 'light' ? 'black' : 'white',
-          headerTitleStyle: {
-            color: colorMode == 'light' ? 'black' : 'white',
-            fontWeight: '400',
-            fontSize: 20
-          },
-        }}
-      /> */}
+     
 
     </Stack.Navigator>
   );
@@ -188,7 +193,7 @@ const HomeStack = ({ navigation }) => {
         options={{
           title: "浪浪別哭",
           headerStyle: {
-            backgroundColor: colorMode == 'light' ? '#F9E6A1' : 'black',
+            backgroundColor: colorMode == 'light' ? '#F9E6A1' : '#BCB9A7',
           },
           headerTitleStyle: {
             color: colorMode == 'light' ? 'black' : 'white',
@@ -204,11 +209,11 @@ const HomeStack = ({ navigation }) => {
         options={{
           title: "詳細",
           headerStyle: {
-            backgroundColor: '#fff',
+            backgroundColor: '#F9E6A1',
           },
           headerTintColor: colorMode == 'light' ? 'black' : 'white',
           headerStyle: {
-            backgroundColor: colorMode == 'light' ? 'white' : 'black',
+            backgroundColor: colorMode == 'light' ? '#F9E6A1' : '#BCB9A7',
           },
           headerTitleStyle: {
             color: colorMode == 'light' ? 'black' : 'white',
@@ -259,6 +264,55 @@ const DTypeStack = ({ navigation }) => {
         })}
       /> */}
      
+    </Stack.Navigator>
+  );
+}
+
+const MenuStack = ({ navigation }) => {
+  const { colorMode } = useColorMode();
+
+  return (
+    <Stack.Navigator
+    // screenOptions={{
+    //   headerShown: false
+    // }}
+    >
+      <Stack.Screen
+        name="Menu"
+        component={MenuScreen}
+        options={{
+          title: "菜單",
+          headerStyle: {
+            backgroundColor: colorMode == 'light' ? '#F9E6A1' : '#BCB9A7',
+          },
+          headerTitleStyle: {
+            color: colorMode == 'light' ? 'black' : 'white',
+            fontWeight: '400',
+            fontSize: 20
+          },
+          
+        }}
+      />
+      <Stack.Screen
+        name="Detail"
+        component={DetailScreen}
+        options={{
+          title: "詳細",
+          headerStyle: {
+            backgroundColor: '#F9E6A1',
+          },
+          headerTintColor: colorMode == 'light' ? 'black' : 'white',
+          headerStyle: {
+            backgroundColor: colorMode == 'light' ? '#F9E6A1' : '#BCB9A7',
+          },
+          headerTitleStyle: {
+            color: colorMode == 'light' ? 'black' : 'white',
+            fontWeight: '400',
+            fontSize: 20
+          },
+        }}
+      />
+      
     </Stack.Navigator>
   );
 }
