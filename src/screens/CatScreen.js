@@ -1,6 +1,6 @@
 import React , { useState }from "react";
 import { Box , Text, Center, useColorMode,Image, ScrollView} from "native-base";
-import CatList from "../components/AlbumList";
+import CatList from "../components/CatList";
 import albumData from "../json/cat.json";
 import SegmentedControlTab from "react-native-segmented-control-tab";
 

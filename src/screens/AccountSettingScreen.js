@@ -72,7 +72,7 @@ import { ScrollView } from 'react-native-gesture-handler';
             /> 
                
          <ModalDropdown options={['台北店','台中店', '台南店']}
-                        style={{borderWidth:2,borderColor: colorMode == "light" ? "#574E45" : "#fff",backgroundColor: colorMode == "light" ? "#FEFFEF" : "#574E45",borderRadius:5 ,width:86,height:40,marginLeft:25,marginTop:30}}
+                        style={{borderWidth:2,borderColor: colorMode == "light" ? "#574E45" : "#fff",backgroundColor: colorMode == "light" ? "#F9E6A1" : "#574E45",borderRadius:5 ,width:86,height:40,alignSelf:"center",marginTop:-40}}
                         TextStyle={{color:colorMode == "light" ? "#574E45" : "#fff" ,fontSize:15, fontWeight:'bold',marginTop:7,marginLeft:10}}
                         defaultValue='台北店 ▼'
                         defaultTextStyle={{color:colorMode == "light" ? "#574E45" : "#fff" ,fontSize:15, fontWeight:'bold',marginTop:7,marginLeft:10}}
@@ -91,7 +91,7 @@ import { ScrollView } from 'react-native-gesture-handler';
         <SegmentedControlTab
             values={["狗狗", "貓貓"]}
             tabStyle={{ 
-               marginTop: 10, borderColor: colorMode == "light" ? "#FEFFEF" : "#574E45", 
+               marginTop: 21, borderColor: colorMode == "light" ? "#FEFFEF" : "#574E45", 
                borderWidth: colorMode=="light"? 0: 4,
                backgroundColor: colorMode == "light" ? "#FEFFEF" : "#574E45" 
             }}
@@ -110,3 +110,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 };
 
 export default AccountSettingScreen;
+
+
+
+

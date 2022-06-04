@@ -18,6 +18,7 @@ import { extendTheme, useColorMode } from 'native-base';
 
 import AlbumScreen from '../screens/AlbumScreen';
 import DetailScreen from '../screens/DetailScreen';
+import CatDetailScreen from '../screens/CatDetailScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import DTypeScreen from '../screens/DTypeScreen'
 import ContentScreen from '../screens/ContentScreen';
@@ -206,6 +207,25 @@ const HomeStack = ({ navigation }) => {
       <Stack.Screen
         name="Detail"
         component={DetailScreen}
+        options={{
+          title: "詳細",
+          headerStyle: {
+            backgroundColor: '#F9E6A1',
+          },
+          headerTintColor: colorMode == 'light' ? 'black' : 'white',
+          headerStyle: {
+            backgroundColor: colorMode == 'light' ? '#F9E6A1' : '#BCB9A7',
+          },
+          headerTitleStyle: {
+            color: colorMode == 'light' ? 'black' : 'white',
+            fontWeight: '400',
+            fontSize: 20
+          },
+        }}
+      />
+      <Stack.Screen
+        name="CatDetail"
+        component={CatDetailScreen}
         options={{
           title: "詳細",
           headerStyle: {

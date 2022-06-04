@@ -1,26 +1,27 @@
 import React from "react";
 import { Box, HStack, VStack, AspectRatio, Text, Image, Pressable,Center ,ScrollView } from "native-base"
+import { TouchableOpacity} from "react-native"
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const CatDetail = ({ album, navigation }) => {
   return (
     <Box 
     flex={1}
-    _dark={{ bg: "#4F5B57" }}
+    _dark={{ bg: "#574E45" }}
     _light={{ bg: "#FEFFEF" }}
             
 > 
 <ScrollView>
     <Box
-      marginLeft={29} marginRight={29} marginTop={10} borderRadius={4} shadow={2} 
-      _dark={{ borderColor: 'blueGray.500', borderWidth: 0.6 }}  
+      marginLeft={29} marginRight={29} marginTop={5} borderRadius={4} shadow={2} 
+       
     >
       
-      <HStack  p={1} _dark={{ bg: "blueGray.900" }}
+      <HStack  p={1} _dark={{ bg: "#35322E" }}
         _light={{ bg: "white" }}>
           
         <Pressable 
-          onPress={() => navigation.navigate('Detail', album)}
+          onPress={() => navigation.navigate('CatDetail', album)}
         >
           
           <HStack  >
@@ -37,7 +38,7 @@ const CatDetail = ({ album, navigation }) => {
               style={{fontSize:16,}}
             >{album.name}</Text> 
             <Box position="absolute" top={-3} right={-13}>
-            <MaterialCommunityIcons name="chevron-right" color="#574E45" size={25} />
+            {/* <MaterialCommunityIcons name="chevron-right" color="#574E45" size={25} /> */}
             </Box>
             </Box>
 
@@ -45,12 +46,39 @@ const CatDetail = ({ album, navigation }) => {
               style={{fontSize:12,color:"#A5A5A5"}}
             >{album.gender}</Text>  
             </VStack>
-
-            <Box w={8} h={8} borderRadius={20} bgColor="#F9E6A1" position="absolute" top={35} left={250}>
-            <Box position="absolute" top={1} right={1}>
-            <MaterialCommunityIcons name="heart-outline" color="#574E45" size={25} />
+            <TouchableOpacity
+             onPress={() => {
+              dispatch(addToCart(album));
+            }}
+            >
+              {/* <TouchableOpacity  
+            onPress={()=>updatewish(!wish)}
+          >
+            {wish?
+              <Box w={10} h={10} borderRadius={20} bgColor="#F9E6A1" position="absolute" top={35} right={-138}>
+              <Box position="absolute" top={1} right={1}>
+                <MaterialCommunityIcons name="heart-outline" color="#574E45" size={30} />
+              </Box>
             </Box>
-            </Box>
+            :<Box w={10} h={10} borderRadius={20} bgColor="#F9E6A1" position="absolute" top={35} right={-138}>
+                  <Box position="absolute" top={1} right={1}>
+                    <MaterialCommunityIcons name="heart" color="#574E45" size={30} />
+                  </Box>
+                </Box>
+            }
+            
+          </TouchableOpacity> */}
+              <Box w={10} h={10} borderRadius={20} bgColor="#F9E6A1" position="absolute" top={35} right={-138}>
+                  <Box position="absolute" top={1} right={1}>
+                    <MaterialCommunityIcons name="heart-outline" color="#574E45" size={30} />
+                  </Box>
+                </Box>
+            </TouchableOpacity>
+                {/* <Box w={8} h={8} borderRadius={20} bgColor="#F9E6A1" position="absolute" top={35} right={-138}>
+                  <Box position="absolute" top={1} right={1}>
+                    <MaterialCommunityIcons name="heart-outline" color="#574E45" size={25} />
+                  </Box>
+                </Box> */}
           </HStack >
           
         </Pressable>
