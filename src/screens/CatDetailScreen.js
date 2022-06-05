@@ -91,7 +91,7 @@ const CatDetailScreen = ({ route}) => {
          </Box>
          <Box 
           w={352}
-          h={200}
+          h={170}
           _dark={{ bg: "#35322E" }}
           _light={{ bg: "#fff" }}
           borderRadius={20}
@@ -102,7 +102,7 @@ const CatDetailScreen = ({ route}) => {
            <ScrollView>
            <HStack alignSelf= 'flex-start' marginTop={13} marginLeft={5} >
              <Box w={2} h={5} bgColor="#ECD563" marginRight={2} marginTop={1}/>
-             <Text w={270} fontSize={15}  lineHeight={30}>
+             <Text w={290} fontSize={15}  lineHeight={30}>
                <Text  >救援經過:  </Text>
                {process}
              </Text>

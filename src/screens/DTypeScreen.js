@@ -32,6 +32,7 @@ const amount = 0;
 // import CartContainer from "../components/CartContainer";
 
 const CartContainer = () => {
+  const { colorMode } = useColorMode();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const totalPrice = useSelector(cartTotalPriceSelector);
@@ -54,7 +55,18 @@ const CartContainer = () => {
 
   const renderStoreItems = ({ item }) => {
     return (
-      <View style={styles.storeItem}>
+      <View style={{
+        flexDirection: "row",
+    padding: 10,
+    marginBottom: 10,
+    marginTop:10,
+    marginVertical: 5,
+    marginHorizontal: 10,
+    borderWidth: 0,
+    borderRadius: 5,
+    backgroundColor: colorMode=="light"?"white":"#35322E",
+    justifyContent: "center",
+      }}>
         <View style={styles.storeItemImg}>
           <Image style={styles.storeItemImage} source={{ uri: item.image }} />
         </View>
@@ -88,15 +100,28 @@ const CartContainer = () => {
                 <Ionicons name="md-add" size={24} color="black" />
               </TouchableOpacity> */}
             </View>
-            <View style={styles.cartItemRemove}>
+            <View style={{
+               alignItems: "center",
+               justifyContent: "center",
+               width:227,
+               backgroundColor:colorMode=="light"?"#F9E6A1":"#BCB9A7",
+               height:30,
+               borderRadius:6
+            }}>
               <TouchableOpacity
                 onPress={() => {
                   dispatch(removeItem(item.id));
                 }}
-                style={styles.cartItemRemoveButton}
+                style={{
+                  marginHorizontal: 20,
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                
+                }}
               >
                 <Ionicons name="md-trash" size={15} color="black" />
-                <Text>移除</Text>
+                <Text style={{color:'#000'}}>移除</Text>
               </TouchableOpacity>
             </View>
           </View>
