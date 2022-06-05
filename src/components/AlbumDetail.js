@@ -1,21 +1,46 @@
-// import React from "react";
+
+// import React, {useEffect, useState } from "react";
 // import { Box, HStack, VStack, AspectRatio, Text, Image, Pressable,Center ,ScrollView } from "native-base"
 // import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+// import { useDispatch, useSelector } from "react-redux";
+// import { addToCart } from "../redux/features/cartSlice";
+// import {Animated,View}from "react-native";
 // const AlbumDetail = ({ album, navigation }) => {
+//   const dispatch = useDispatch();
+ 
+  
+//   const AnimatedIcon=Animated.createAnimatedComponent(MaterialCommunityIcons);
+//   const [liked,setliked]=useState(false);
+//   const [visible,setVisible]=useState(false);
+//   const currentValue =new Animated.Value(1);
+//   useEffect(()=>{
+//     if(liked==true){
+//       Animated.spring(currentValue,{
+//         toValue:2,
+//         friction:2
+//       }).start(()=>{
+//         Animated.spring(currentValue,{
+//           toValue:1
+//         }).start(()=>{
+//           setVisible(false)
+//         })
+//       })
+//     }
+    
+//   },[liked])
 //   return (
 //     <Box 
 //     flex={1}
 //     _dark={{ bg: "#4F5B57" }}
 //     _light={{ bg: "#FEFFEF" }}
             
-// > 
+//   > 
 // <ScrollView>
 //     <Box
 //       marginLeft={29} marginRight={29} marginTop={5} borderRadius={4} shadow={2} 
 //       _dark={{ borderColor: 'blueGray.500', borderWidth: 0.6 }}  
 //     >
-      
+     
 //       <HStack  p={1} _dark={{ bg: "blueGray.900" }}
 //         _light={{ bg: "white" }}>
           
@@ -24,7 +49,22 @@
 //         >
           
 //           <HStack  >
-         
+//               {visible &&
+//                     <AnimatedIcon  
+//                     style={{
+//                     position:"absolute",
+//                     top:30,
+                    
+//                     left:"70%",
+//                     elevation:4,
+//                     zIndex:3,
+//                     transform:[
+//                       {scale:currentValue}
+//                     ]
+//               }}
+//               name="heart" size={50} color="red"/>      
+//               }
+              
 //             <Image
 //               source={{ uri: album.image }}
 //               alt="dog"
@@ -45,12 +85,35 @@
 //               style={{fontSize:12,color:"#A5A5A5"}}
 //             >{album.gender}</Text>  
 //             </VStack>
-
-//             <Box w={8} h={8} borderRadius={20} bgColor="#F9E6A1" position="absolute" top={35} right={-138}>
-//             <Box position="absolute" top={1} right={1}>
-//             <MaterialCommunityIcons name="heart-outline" color="#574E45" size={25} />
-//             </Box>
-//             </Box>
+//             <Pressable
+//              onPress={() => {
+//               dispatch(addToCart(album));
+//             }}
+//             >
+//               <Box w={8} h={8} borderRadius={20} bgColor="#F9E6A1" position="absolute" top={35} right={-138}>
+//                   <Box position="absolute" top={1} right={1}>
+                  
+//                     <MaterialCommunityIcons name={liked?"heart":"heart-outline"} 
+//                     color="#574E45"
+//                      size={25} 
+//                      style={{
+                      
+//                      }}
+//                     onPress={() => {
+//                       setliked(!liked);
+//                       if(liked==false){
+//                         setVisible(true);
+//                       }
+                      
+                      
+//                       dispatch(addToCart(album));
+//                     }}
+//                     />
+                   
+//                   </Box>
+//                 </Box>
+//             </Pressable>
+               
 //           </HStack >
           
 //         </Pressable>
@@ -63,60 +126,36 @@
 //   )};
 
 // export default AlbumDetail;
-
-
-
-// import React from "react";
-// import { StyleSheet } from "react-native";
-// import { Box, HStack, VStack, AspectRatio, Text, Image, Pressable,Center } from "native-base"
-
-// const AlbumDetail = ({ album, navigation }) => {
-//   return (
-//     <Box 
-//       marginX={0} marginBottom={2} marginTop={5}  shadow={2} flex={1}
-//       // _dark={{  borderWidth: 0.6 }}
-//     >
-      
-//       <Center>
-//       <VStack>
-//           <HStack>
-//           <Pressable 
-//           onPress={() => navigation.navigate('Content',album)}
-//           > 
-//             <Center  width="304" height="167"  bg="#B9D2C8" borderRadius={7}  >
-            
-//             <Image
-//               source={{ uri: album.image }}
-//               alt="album"
-//               width="304" height="167" 
-//               flex={1}
-//               borderRadius={7}
-             
-//             /> 
-//              <Center  width="304" height="46"  bg="#B9D2C8" borderRadius={7}   >
-//              <Text position= "absolute"  fontWeight="bold"  marginRight={50} _dark={{  color:"#4F5B57"}} color="#4F5B57">{album.title}</Text>
-//              </Center>
-//             </Center>
-//             </Pressable> 
-//           </HStack>
-         
-//       </VStack>
-//       </Center>
-      
-     
-//     </Box>
-//   )};
-
-// export default AlbumDetail;
-import React , { useState }from "react";
+import React , { useState,useEffect }from "react";
 import { Box, HStack, VStack, AspectRatio, Text, Image, Pressable,Center ,ScrollView } from "native-base"
-import { TouchableOpacity} from "react-native"
+import { TouchableOpacity,Animated,View} from "react-native"
+
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../redux/features/cartSlice";
+import { addToCart,removeItem } from "../redux/features/cartSlice";
 const AlbumDetail = ({ album, navigation }) => {
-  const dispatch = useDispatch();
-  const [wish,updatewish]=useState(false)
+    const dispatch = useDispatch();
+ 
+  
+  const AnimatedIcon=Animated.createAnimatedComponent(MaterialCommunityIcons);
+  const [liked,setliked]=useState(false);
+  const [visible,setVisible]=useState(false);
+  const currentValue =new Animated.Value(1);
+  useEffect(()=>{
+    if(liked==true){
+      Animated.spring(currentValue,{
+        toValue:2,
+        friction:2
+      }).start(()=>{
+        Animated.spring(currentValue,{
+          toValue:1
+        }).start(()=>{
+          setVisible(false)
+        })
+      })
+    }
+    
+  },[liked])
   return (
     <Box 
     flex={1}
@@ -138,7 +177,22 @@ const AlbumDetail = ({ album, navigation }) => {
         >
           
           <HStack  >
-         
+          {visible &&
+                    <AnimatedIcon  
+                    style={{
+                    position:"absolute",
+                    top:30,
+                    
+                    left:"90%",
+                    elevation:4,
+                    zIndex:3,
+                    transform:[
+                      {scale:currentValue}
+                    ]
+              }}
+              name="heart" size={50} color="#ECD563"/>      
+              }
+              
             <Image
               source={{ uri: album.image }}
               alt="dog"
@@ -159,39 +213,37 @@ const AlbumDetail = ({ album, navigation }) => {
               style={{fontSize:12,color:"#A5A5A5"}}
             >{album.gender}</Text>  
             </VStack>
-            <TouchableOpacity
+            {/* <TouchableOpacity
              onPress={() => {
               dispatch(addToCart(album));
             }}
-            >
-              {/* <TouchableOpacity  
-            onPress={()=>updatewish(!wish)}
-          >
-            {wish?
-              <Box w={10} h={10} borderRadius={20} bgColor="#F9E6A1" position="absolute" top={35} right={-138}>
-              <Box position="absolute" top={1} right={1}>
-                <MaterialCommunityIcons name="heart-outline" color="#574E45" size={30} />
-              </Box>
-            </Box>
-            :<Box w={10} h={10} borderRadius={20} bgColor="#F9E6A1" position="absolute" top={35} right={-138}>
-                  <Box position="absolute" top={1} right={1}>
-                    <MaterialCommunityIcons name="heart" color="#574E45" size={30} />
+            > */}
+              
+              <Box w={10} h={10} borderRadius={20} bgColor="#F9E6A1" position="absolute" top={30} right={-130}>
+                  <Box position="absolute" top={2} right={2}>
+                  <MaterialCommunityIcons name={liked?"heart":"heart-outline"} 
+                    color="#574E45"
+                     size={25} 
+                     
+                     style={{
+                      
+                     }}
+                    onPress={() => {
+                      setliked(!liked);
+                      if(liked==false){
+                        setVisible(true);
+                      
+                      }
+                     
+                      liked?dispatch(removeItem(album)):dispatch(addToCart(album));
+                      
+                     
+                    }}
+                    />
                   </Box>
                 </Box>
-            }
-            
-          </TouchableOpacity> */}
-              <Box w={10} h={10} borderRadius={20} bgColor="#F9E6A1" position="absolute" top={35} right={-138}>
-                  <Box position="absolute" top={1} right={1}>
-                    <MaterialCommunityIcons name="heart-outline" color="#574E45" size={30} />
-                  </Box>
-                </Box>
-            </TouchableOpacity>
-                {/* <Box w={8} h={8} borderRadius={20} bgColor="#F9E6A1" position="absolute" top={35} right={-138}>
-                  <Box position="absolute" top={1} right={1}>
-                    <MaterialCommunityIcons name="heart-outline" color="#574E45" size={25} />
-                  </Box>
-                </Box> */}
+            {/* </TouchableOpacity> */}
+                
           </HStack >
           
         </Pressable>

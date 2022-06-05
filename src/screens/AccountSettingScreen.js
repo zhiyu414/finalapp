@@ -72,7 +72,7 @@ import { ScrollView } from 'react-native-gesture-handler';
             /> 
                
          <ModalDropdown options={['台北店','台中店', '台南店']}
-                        style={{borderWidth:2,borderColor: colorMode == "light" ? "#574E45" : "#fff",backgroundColor: colorMode == "light" ? "#F9E6A1" : "#574E45",borderRadius:5 ,width:86,height:40,alignSelf:"center",marginTop:-40}}
+                        style={{borderWidth:2,borderColor: colorMode == "light" ? "#574E45" : "#fff",backgroundColor: colorMode == "light" ? "#F9E6A1" : "#BCB9A7",borderRadius:5 ,width:86,height:40,alignSelf:"center",marginTop:-40}}
                         TextStyle={{color:colorMode == "light" ? "#574E45" : "#fff" ,fontSize:15, fontWeight:'bold',marginTop:7,marginLeft:10}}
                         defaultValue='台北店 ▼'
                         defaultTextStyle={{color:colorMode == "light" ? "#574E45" : "#fff" ,fontSize:15, fontWeight:'bold',marginTop:7,marginLeft:10}}
@@ -111,25 +111,48 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 export default AccountSettingScreen;
 
+
 // import React, { useState } from 'react';
 // import { TouchableOpacity } from "react-native";
 // import SegmentedControlTab from "react-native-segmented-control-tab";
-// import {CustomSegmentedControl} from 'react-native-custom-segmented-control'
 // import ModalDropdown from 'react-native-modal-dropdown';
 // import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 // import AlbumScreen from "./AlbumScreen"
 // import CatScreen from "./CatScreen"
 // import { Box, Text, Center, useColorMode ,Image, HStack} from "native-base";
 // import { ScrollView } from 'react-native-gesture-handler';
+// import Animated, {
+//    useAnimatedStyle,
+//    useSharedValue,
+//    withRepeat,
+//    withTiming,
+//    Easing,
+// } from 'react-native-reanimated';
 
+// // const AnimatedButton = Animated.createAnimatedComponent(Button)
 
 // // export default function TabVAccountSettingScreeniewExample() {
 //    const AccountSettingScreen = ({navigation}) => {
 //    const [selectedIndex, setSelectedIndex] = useState(0);
 //    const { colorMode } = useColorMode();
+//    const rotation = useSharedValue(0);
+//    const animatedSpinnerStyles = useAnimatedStyle(() => {
+//       return {
+//          transform: [
+//             {
+//                rotateZ: `${rotation.value}deg`,
+//             },
+//          ],
+//       };
+//    }, [rotation.value]);
 
 //    const SegmentedContent = () => {
 //       if (selectedIndex == 1) {
+//          rotation.value = withTiming(0, {
+//             duration: 1000,
+//             easing: Easing.linear,
+//          });
+         
 //          return (
 //             <Box flex={1}
 //                _dark={{ bg: "#574E45" }}
@@ -138,6 +161,14 @@ export default AccountSettingScreen;
 //             </Box>
 //          )
 //       } else {
+//          rotation.value = withRepeat(
+//             withTiming(360, {
+//                duration: 1000,
+//                easing: Easing.linear,
+//             }),
+//             -1
+//          );
+        
 //          return (
 //             <Box flex={1}
 //                _dark={{ bg: "#574E45" }}
@@ -201,53 +232,21 @@ export default AccountSettingScreen;
          
          
 
-//         {/* <SegmentedControl
+//         <SegmentedControlTab
 //             values={["狗狗", "貓貓"]}
 //             tabStyle={{ 
 //                marginTop: 21, borderColor: colorMode == "light" ? "#FEFFEF" : "#574E45", 
 //                borderWidth: colorMode=="light"? 0: 4,
 //                backgroundColor: colorMode == "light" ? "#FEFFEF" : "#574E45" 
 //             }}
-//             // firstTabStyle={{ marginLeft: 100 }}
-//             // lastTabStyle={{ marginRight: 100 }}
-//             inactiveTextStyle={{ fontSize: 15, padding:3, color: colorMode == "light" ? "gray" : "#a5a5a5", }}
-//             // activeTabStyle={{borderBottomWidth:2 ,borderBottomColor:colorMode=="light"?"#000":"#fff",backgroundColor:colorMode=="light"?"#FEFFEF":"#574E45"}}
-//             activeTextStyle={{ color: colorMode == "light" ? "#000" : "#fff" }}
+//             firstTabStyle={{ marginLeft: 100 }}
+//             lastTabStyle={{ marginRight: 100 }}
+//             tabTextStyle={{ fontSize: 15, padding:3, color: colorMode == "light" ? "gray" : "#a5a5a5", }}
+//             activeTabStyle={{borderBottomWidth:2 ,borderBottomColor:colorMode=="light"?"#000":"#fff",backgroundColor:colorMode=="light"?"#FEFFEF":"#574E45"}}
+//             activeTabTextStyle={{ color: colorMode == "light" ? "#000" : "#fff" }}
 //             selectedIndex={selectedIndex}
-//             onChange={(index) => setSelectedIndex(index)}
-//          /> */}
-
-// <CustomSegmentedControl 
-// 	style={{
-// 		flex:1,
-// 		backgroundColor: 'white',	
-// 		marginVertical: 8
-// 	}}
-// 	textValues={['ORDERS','PRODUCTS' ]}
-// 	selected={0}
-// 	segmentedStyle={{
-// 		selectedLineHeight: 2,
-// 		fontSize:17,
-// 		fontWeight: 'bold', // bold, italic, regular (default)
-// 		segmentBackgroundColor: 'transparent',
-// 		segmentTextColor: '#7a92a5',
-// 		segmentHighlightTextColor: '#7a92a599',
-// 		selectedLineColor: '#00adf5',
-// 		selectedLineAlign: 'bottom', // top/bottom/text
-// 		selectedLineMode: 'text', // full/text
-// 		selectedTextColor: 'black',                                                  
-// 		selectedLinePaddingWidth: 30,
-// 		segmentFontFamily: 'system-font-bold'
-// 	}}
-// 	animation={{
-// 		duration: 0.7,
-// 		damping: 0.5,
-// 		animationType: 'middle-line',
-// 		initialDampingVelocity: 0.4
-// 	}}
-// 	onSelectedWillChange={(index)=> setSelectedIndex(index)}
-	
-// />
+//             onTabPress={(index) => setSelectedIndex(index)}
+//          />
 //          <SegmentedContent />
 //          </ScrollView>
 //       </Box>
@@ -255,5 +254,3 @@ export default AccountSettingScreen;
 // };
 
 // export default AccountSettingScreen;
-
-

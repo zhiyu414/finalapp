@@ -1,9 +1,33 @@
-import React from "react";
+import React , { useState,useEffect }from "react";
 import { Box, HStack, VStack, AspectRatio, Text, Image, Pressable,Center ,ScrollView } from "native-base"
-import { TouchableOpacity} from "react-native"
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { TouchableOpacity,Animated,View} from "react-native"
 
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart,removeItem } from "../redux/features/cartSlice";
 const CatDetail = ({ album, navigation }) => {
+    const dispatch = useDispatch();
+ 
+  
+  const AnimatedIcon=Animated.createAnimatedComponent(MaterialCommunityIcons);
+  const [liked,setliked]=useState(false);
+  const [visible,setVisible]=useState(false);
+  const currentValue =new Animated.Value(1);
+  useEffect(()=>{
+    if(liked==true){
+      Animated.spring(currentValue,{
+        toValue:2,
+        friction:2
+      }).start(()=>{
+        Animated.spring(currentValue,{
+          toValue:1
+        }).start(()=>{
+          setVisible(false)
+        })
+      })
+    }
+    
+  },[liked])
   return (
     <Box 
     flex={1}
@@ -25,7 +49,22 @@ const CatDetail = ({ album, navigation }) => {
         >
           
           <HStack  >
-         
+          {visible &&
+                    <AnimatedIcon  
+                    style={{
+                    position:"absolute",
+                    top:30,
+                    
+                    left:"90%",
+                    elevation:4,
+                    zIndex:3,
+                    transform:[
+                      {scale:currentValue}
+                    ]
+              }}
+              name="heart" size={50} color="#ECD563"/>      
+              }
+              
             <Image
               source={{ uri: album.image }}
               alt="dog"
@@ -46,39 +85,37 @@ const CatDetail = ({ album, navigation }) => {
               style={{fontSize:12,color:"#A5A5A5"}}
             >{album.gender}</Text>  
             </VStack>
-            <TouchableOpacity
+            {/* <TouchableOpacity
              onPress={() => {
               dispatch(addToCart(album));
             }}
-            >
-              {/* <TouchableOpacity  
-            onPress={()=>updatewish(!wish)}
-          >
-            {wish?
-              <Box w={10} h={10} borderRadius={20} bgColor="#F9E6A1" position="absolute" top={35} right={-138}>
-              <Box position="absolute" top={1} right={1}>
-                <MaterialCommunityIcons name="heart-outline" color="#574E45" size={30} />
-              </Box>
-            </Box>
-            :<Box w={10} h={10} borderRadius={20} bgColor="#F9E6A1" position="absolute" top={35} right={-138}>
-                  <Box position="absolute" top={1} right={1}>
-                    <MaterialCommunityIcons name="heart" color="#574E45" size={30} />
+            > */}
+              
+              <Box w={10} h={10} borderRadius={20} bgColor="#F9E6A1" position="absolute" top={30} right={-130}>
+                  <Box position="absolute" top={2} right={2}>
+                  <MaterialCommunityIcons name={liked?"heart":"heart-outline"} 
+                    color="#574E45"
+                     size={25} 
+                     
+                     style={{
+                      
+                     }}
+                    onPress={() => {
+                      setliked(!liked);
+                      if(liked==false){
+                        setVisible(true);
+                      
+                      }
+                     
+                      liked?dispatch(removeItem(album)):dispatch(addToCart(album));
+                      
+                     
+                    }}
+                    />
                   </Box>
                 </Box>
-            }
-            
-          </TouchableOpacity> */}
-              <Box w={10} h={10} borderRadius={20} bgColor="#F9E6A1" position="absolute" top={35} right={-138}>
-                  <Box position="absolute" top={1} right={1}>
-                    <MaterialCommunityIcons name="heart-outline" color="#574E45" size={30} />
-                  </Box>
-                </Box>
-            </TouchableOpacity>
-                {/* <Box w={8} h={8} borderRadius={20} bgColor="#F9E6A1" position="absolute" top={35} right={-138}>
-                  <Box position="absolute" top={1} right={1}>
-                    <MaterialCommunityIcons name="heart-outline" color="#574E45" size={25} />
-                  </Box>
-                </Box> */}
+            {/* </TouchableOpacity> */}
+                
           </HStack >
           
         </Pressable>

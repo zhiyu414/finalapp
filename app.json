@@ -1,14 +1,17 @@
+
+
+
 {
   "expo": {
-    "name": "wk1proj",
-    "slug": "wk1proj",
+    "name": "14Persnote app",
+    "slug": "14persnote-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./src/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#fff"
+        "resizeMode": "contain",
+        "backgroundColor": "#fff"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -27,6 +30,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Persnote app",
+    "githubUrl": "https://github.com/FFF2832/wkmidterm"
   }
 }

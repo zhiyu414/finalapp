@@ -34,6 +34,7 @@
     "react-native-app-intro-slider": "^4.0.4",
     "react-native-custom-segmented-control": "^3.1.0",
     "react-native-gesture-handler": "2.1.0",
+    "react-native-maps": "^0.31.1",
     "react-native-modal-dropdown": "^1.0.2",
     "react-native-reanimated": "~2.3.1",
     "react-native-safe-area-context": "3.3.2",

@@ -15,7 +15,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { StatusBar, Divider, Image, Input, HStack, Box } from 'native-base';
 import { extendTheme, useColorMode } from 'native-base';
-
+import MapScreen from'../screens/MapScreen';
 import AlbumScreen from '../screens/AlbumScreen';
 import DetailScreen from '../screens/DetailScreen';
 import CatDetailScreen from '../screens/CatDetailScreen';
@@ -142,10 +142,10 @@ const SettingsStack = ({ navigation }) => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="資訊"
+        name="Settings"
         component={SettingsScreen}
         options={{
-          title: "Settings",
+          title: "資訊",
           headerStyle: {
             backgroundColor: colorMode == 'light' ? '#F9E6A1' : '#BCB9A7',
           },
@@ -166,6 +166,25 @@ const SettingsStack = ({ navigation }) => {
             backgroundColor: colorMode == 'light' ? '#F9E6A1' : '#BCB9A7',
           },
           headerTintColor: colorMode == 'light' ? 'black' : 'white',
+          headerTitleStyle: {
+            color: colorMode == 'light' ? 'black' : 'white',
+            fontWeight: '400',
+            fontSize: 20
+          },
+        }}
+      />
+      <Stack.Screen
+        name="Map"
+        component={MapScreen}
+        options={{
+          title: "地圖",
+          headerStyle: {
+            backgroundColor: '#F9E6A1',
+          },
+          headerTintColor: colorMode == 'light' ? 'black' : 'white',
+          headerStyle: {
+            backgroundColor: colorMode == 'light' ? '#F9E6A1' : '#BCB9A7',
+          },
           headerTitleStyle: {
             color: colorMode == 'light' ? 'black' : 'white',
             fontWeight: '400',
@@ -258,9 +277,18 @@ const DTypeStack = ({ navigation }) => {
         options={{
           title: "我的收藏",
           headerStyle: {
-            backgroundColor: colorMode == 'light' ? 'white' : '#4F5B57',
+            backgroundColor: colorMode == 'light' ? '#F9E6A1' : '#BCB9A7',
           },
-          
+          headerTintColor: colorMode == 'light' ? 'black' : 'white',
+          headerStyle: {
+            backgroundColor: colorMode == 'light' ? '#F9E6A1' : '#BCB9A7',
+          },
+          headerTitleStyle: {
+            color: colorMode == 'light' ? 'black' : 'white',
+            fontWeight: '400',
+            fontSize: 20
+          },
+        
          
         }}
       />

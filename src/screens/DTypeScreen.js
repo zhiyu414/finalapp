@@ -1,50 +1,12 @@
-// import React from "react";
-// import { Box,Image,Center} from "native-base";
-// import DTypeList from "../components/DTypeList";
-// import typeData from "../json/type.json";
-// // import { Box, HStack, VStack, AspectRatio, Text,  Pressable,Center } from "native-base"
-// import {  ScrollView} from 'react-native';
-// import { FlatList } from "react-native-gesture-handler";
-// const DTypeScreen = ({ list,navigation }) => {
-//   const renderItem = ({ item }) => <DTypeDetail dtype={item} navigation={navigation} />;
-//   return (
-//     <>
-    
-//       <FlatList
-//         ListHeaderComponent={
-//           < DTypeList 
-//         _dark={{ bg: "#4F5B57"  }}
-//         _light={{ bg: "#E2D5C3"  }}
-        
-//           data={list}
-//           renderItem={renderItem}
-//           keyExtractor={item => item.title}
-//           paddingBottom={10}
-
-//           list={typeData.typeList}
-//           navigation={navigation}
-//           />
-//         }
-//         />  
-     
-
-
-    
-   
-//     </>
-//   );
-// };
-
-// export default DTypeScreen;
 
 
 import {
   StyleSheet,
-  Text,
+  
   View,
-  Button,
+  
   FlatList,
-  Image,
+
   TouchableOpacity,
   Alert,
 } from "react-native";
@@ -59,9 +21,9 @@ import {
 } from "../redux/features/cartSlice";
 import { cartTotalPriceSelector } from "../redux/selectors";
 import { useNavigation, NavigationContainer } from "@react-navigation/native";
-
+import { Center, ScrollView, Box, AspectRatio, Text, Heading, Image, Button, HStack ,VStack,useColorMode} from "native-base";
 //import Header from component folder- this takes props
-import Header from "../components/Header";
+// import Header from "../components/Header";
 // import Data from "../../assets/cartItems";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -76,7 +38,7 @@ const CartContainer = () => {
 
   const AlertItem = () => {
     Alert.alert(
-      "Are you sure you want to clear the cart?",
+      "確定要清除所有浪浪嗎?",
       "",
       [
         {
@@ -98,12 +60,12 @@ const CartContainer = () => {
         </View>
         <View style={styles.storeItemInfo}>
           <Text style={styles.storeItemTitle}>{item.name}</Text>
-          {/* <Text style={styles.storeItemPrice}>
-            {item.quantity * item.price}
-          </Text> */}
+          <Text style={styles.storeItemPrice}>
+            {item.gender}
+          </Text>
           <View style={styles.addToCart}>
             <View style={styles.cartItemAmount}>
-              <TouchableOpacity
+              {/* <TouchableOpacity
                 onPress={() => {
                   if (item.quantity === 1) {
                     dispatch(removeItem(item.id));
@@ -116,15 +78,15 @@ const CartContainer = () => {
                 }}
               >
                 <Ionicons name="md-remove" size={24} color="black" />
-              </TouchableOpacity>
-              <Text style={styles.cartItemAmountText}>{item.quantity}</Text>
+              </TouchableOpacity> */}
+              {/* <Text style={styles.cartItemAmountText}>{item.quantity}</Text>
               <TouchableOpacity
                 onPress={() => {
                   dispatch(increment(item.id));
                 }}
               >
                 <Ionicons name="md-add" size={24} color="black" />
-              </TouchableOpacity>
+              </TouchableOpacity> */}
             </View>
             <View style={styles.cartItemRemove}>
               <TouchableOpacity
@@ -134,7 +96,7 @@ const CartContainer = () => {
                 style={styles.cartItemRemoveButton}
               >
                 <Ionicons name="md-trash" size={15} color="black" />
-                <Text>Remove</Text>
+                <Text>移除</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -144,7 +106,7 @@ const CartContainer = () => {
   };
 
   return (
-    <View>
+    <View  >
       <FlatList
         data={cart}
         renderItem={renderStoreItems}
@@ -155,11 +117,12 @@ const CartContainer = () => {
               flexDirection: "row",
               justifyContent: "space-between",
               paddingHorizontal: 10,
+              marginBottom:20
             }}
           >
-            <Text style={styles.storeItemTitle}>My Cart</Text>
+            <Text style={styles.storeItemTitle}>我的浪浪</Text>
             <TouchableOpacity onPress={AlertItem}>
-              <Text style={styles.storeItemPrice}>Clear cart</Text>
+              <Text style={styles.storeItemSubTitle}>清除全部</Text>
             </TouchableOpacity>
           </View>
         )}
@@ -168,12 +131,12 @@ const CartContainer = () => {
             <View style={styles.cartFooter}>
               <View style={styles.checkout}>
                 {cart.length === 0 ? (
-                  <Text style={styles.checkoutText}>Your cart is empty</Text>
+                  <Text style={styles.checkoutText}>目前沒有浪浪喔</Text>
                 ) : (
                   <View style={styles.checkoutFull}>
-                    <Text style={styles.checkoutText}>
+                    {/* <Text style={styles.checkoutText}>
                       Total: R{totalPrice}
-                    </Text>
+                    </Text> */}
 
                     {/* <Button
                       title="Checkout"
@@ -181,15 +144,15 @@ const CartContainer = () => {
                       onPress={() => {
                         // dispatch(checkout());
                       }}
-                    /> */}
-                    {/* <Button
+                    />
+                    <Button
                       onPress={() => goBack()}
                       title="Continue Shopping"
                     /> */}
                   </View>
                 )}
               </View>
-              <View style={{ height: 200 }} />
+              <View  />
             </View>
           );
         }}
@@ -199,11 +162,37 @@ const CartContainer = () => {
 };
 
 const DTypeScreen = ({ navigation: { goBack } }) => {
+  const { colorMode } = useColorMode();
   return (
-    <SafeAreaView>
-      {/* <Header headerIcon="ios-chevron-back" onPressMenu={() => goBack()} /> */}
-      <CartContainer />
-    </SafeAreaView>
+
+    // <SafeAreaView>
+      <Box flex={1}
+      _dark={{ bg: "#574E45" }}
+      _light={{ bg: "#FEFFEF" }}
+      >
+        <Image
+                    margin="0"
+                    width="100%"
+                    height="230"
+                    
+                    
+                    paddingRight={4}
+                    position= "absolute" 
+                    marginTop={0}
+                    
+                    source={{ uri: colorMode=="light"?"https://github.com/FFF2832/finalapp/blob/master/src/images/Vector%201.png?raw=true":"https://raw.githubusercontent.com/zhiyu414/json/master/image/Vector%201%20(1).png" }}
+                alt="artist"
+                />
+        <CartContainer 
+        
+        />
+        <Box  style={{  backgroundColor: "#FEFFEF" ,weight:100}}>
+
+        </Box>
+      </Box>
+     
+      
+    // </SafeAreaView>
   );
 };
 
@@ -214,9 +203,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: 10,
     marginBottom: 10,
+    marginTop:10,
     marginVertical: 5,
     marginHorizontal: 10,
-    borderColor: "black",
+    borderColor: "#FEFFEF",
+    
     borderWidth: 1,
     borderRadius: 5,
     backgroundColor: "white",
@@ -224,7 +215,7 @@ const styles = StyleSheet.create({
   },
   storeItemImg: {
     width: "30%",
-    height: 100,
+    height: 120,
     borderRadius: 5,
     overflow: "hidden",
   },
@@ -239,15 +230,22 @@ const styles = StyleSheet.create({
   storeItemTitle: {
     fontSize: 18,
     fontWeight: "bold",
+    marginTop:20,
   },
   storeItemPrice: {
-    fontSize: 16,
-    color: "red",
+    fontSize: 14,
+    color: "gray",
+    
+  },
+  storeItemSubTitle:{
+    fontSize: 14,
+    color: "gray",
+    marginTop:20,
   },
   addToCart: {
     backgroundColor: "coral",
     borderRadius: 5,
-    marginTop: 10,
+    marginTop: 5,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -269,12 +267,22 @@ const styles = StyleSheet.create({
   cartItemRemove: {
     alignItems: "center",
     justifyContent: "center",
+    width:227,
+    backgroundColor:"#F9E6A1",
+    height:30,
+    borderRadius:6
+
+    
   },
   cartItemRemoveButton: {
     marginHorizontal: 20,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    
+   
+    
+
   },
   cartFooter: {
     justifyContent: "space-between",
