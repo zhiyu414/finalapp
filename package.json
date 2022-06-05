@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.16.7",
+    "@react-native-segmented-control/segmented-control": "^2.4.0",
     "@react-navigation/bottom-tabs": "^6.2.0",
     "@react-navigation/drawer": "^6.3.1",
     "@react-navigation/native": "^6.0.8",

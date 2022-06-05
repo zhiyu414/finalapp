@@ -105,7 +105,7 @@ const slides = [
     image: {
       uri:
         
-        'https://github.com/zhiyu414/json/blob/master/image/intro1.png?raw=true',
+        'https://raw.githubusercontent.com/zhiyu414/json/master/image/intro1.png',
     },
     
     backgroundColor: '#20d2bb',
