@@ -485,6 +485,7 @@
 
 
 import React,{ useRef }  from 'react';
+// import { Platform } from 'react-native';
 import { Animated, Dimensions,  Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import 'react-native-gesture-handler';
 // import { NavigationContainer } from '@react-navigation/native';
@@ -562,7 +563,7 @@ export default function index() {
             <View style={{
               // centring Tab Button...
               position: 'absolute',
-              top: 20,
+              top: 16,
               
             }}>
               <FontAwesome5
@@ -589,7 +590,7 @@ export default function index() {
             <View style={{
               // centring Tab Button...
               position: 'absolute',
-              top: 20
+              top: 16
             }}>
               <FontAwesome5
                 name="heart"
@@ -619,7 +620,7 @@ export default function index() {
             <View style={{
               // centring Tab Button...
               position: 'absolute',
-              top: 20
+              top: 15
             }}>
               {/* <FontAwesome5
                 name="bell"
@@ -647,7 +648,7 @@ export default function index() {
             <View style={{
               // centring Tab Button...
               position: 'absolute',
-              top: 20
+              top: 16
             }}>
               <FontAwesome5
                 name="info-circle"
@@ -673,7 +674,8 @@ export default function index() {
         height: 3,
         backgroundColor: colorMode=="light"?"#35322E" : "#ECD563",
         position: 'absolute',
-        bottom:80,
+        
+        bottom:Platform.OS == 'ios' ? 80:50,
         // Horizontal Padding = 20...
         left:20,
         borderRadius: 20,

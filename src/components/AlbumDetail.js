@@ -150,7 +150,7 @@
 
 import React , { useState,useEffect }from "react";
 import { Box, HStack, VStack, AspectRatio, Text, Image, Pressable,Center ,ScrollView } from "native-base"
-import { TouchableOpacity,Animated,View} from "react-native"
+import { TouchableOpacity,Animated,View,  Platform} from "react-native"
 import {updateSelector } from "../redux/selectors";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useDispatch, useSelector } from "react-redux";
@@ -253,10 +253,8 @@ const AlbumDetail = ({ album, navigation }) => {
               dispatch(addToCart(album));
             }}
             > */}
-              
-              {/* <Box w={50} h={50} borderRadius={60} bgColor="#F9E6A1" position="absolute" top={30} right={0}> */}
-              {/* <Center   position="absolute" top={30} right={-13}> */}
-              <Box w={50} h={50} borderRadius={60} bgColor="#F9E6A1" position="absolute" top={30} right={-130}>
+            
+              <Box w={50} h={50} borderRadius={60} bgColor="#F9E6A1" position="absolute" top={30} style={{ right:Platform.OS=='ios'?-130:-110}} >
                   <Box position="absolute" top={2} right={2}>
                   <MaterialCommunityIcons name={liked?"heart":"heart-outline"} 
                     color="#574E45"
