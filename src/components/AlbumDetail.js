@@ -205,7 +205,7 @@ const AlbumDetail = ({ album, navigation }) => {
     >
       
       <HStack  p={1} _dark={{ bg: "#35322E" }}
-        _light={{ bg: "white" }}>
+        _light={{ bg: "white" }} flex={1} >
           
         <Pressable 
           onPress={() => navigation.navigate('Detail', album)}
@@ -233,16 +233,16 @@ const AlbumDetail = ({ album, navigation }) => {
               alt="dog"
               style={{width:87,height:103}}
             />
+            
             <VStack marginLeft={15} marginTop={30}>    
-
-            <Box>     
+            
+                
+             
             <Text
               style={{fontSize:16,}}
             >{album.name}</Text> 
-            <Box position="absolute" top={-3} right={-13}>
-            {/* <MaterialCommunityIcons name="chevron-right" color="#574E45" size={25} /> */}
-            </Box>
-            </Box>
+            
+            
 
             <Text
               style={{fontSize:12,color:"#A5A5A5"}}
@@ -254,6 +254,8 @@ const AlbumDetail = ({ album, navigation }) => {
             }}
             > */}
               
+              {/* <Box w={50} h={50} borderRadius={60} bgColor="#F9E6A1" position="absolute" top={30} right={0}> */}
+              {/* <Center   position="absolute" top={30} right={-13}> */}
               <Box w={50} h={50} borderRadius={60} bgColor="#F9E6A1" position="absolute" top={30} right={-130}>
                   <Box position="absolute" top={2} right={2}>
                   <MaterialCommunityIcons name={liked?"heart":"heart-outline"} 
@@ -265,12 +267,10 @@ const AlbumDetail = ({ album, navigation }) => {
                      }}
                     onPress={() => {
                       // dispatch(updateItem());
-                    setliked(!liked);
-                     
+                      setliked(!liked);
+                      
                       if(liked==false){
                         setVisible(true);
-
-                       
                       }
                      
                       likestate?dispatch(removeItem(album.id)):dispatch(addToCart(album));
@@ -282,9 +282,11 @@ const AlbumDetail = ({ album, navigation }) => {
                   </Box>
                   <Text>{likestate}</Text>
                 </Box>
+                {/* </Center> */}
+                </HStack>
             {/* </TouchableOpacity> */}
                 
-          </HStack >
+          
           
         </Pressable>
       </HStack >   

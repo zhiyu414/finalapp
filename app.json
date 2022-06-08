@@ -3,8 +3,8 @@
 
 {
   "expo": {
-    "name": "14Persnote app",
-    "slug": "14persnote-app",
+    "name": "浪浪收藏館",
+    "slug": "strayAnimals-Collections ",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -31,7 +31,7 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": "Persnote app",
+    "description": "浪浪別哭APP",
     "githubUrl": "https://github.com/FFF2832/wkmidterm"
   }
 }
